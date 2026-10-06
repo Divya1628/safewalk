@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SafeSight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="auth-view">
+    <div class="auth-layout screen login-layout">
+      <div class="hero-panel">
+        <div class="brand-row">
+          <div class="brand-mark">
+            <span class="shield"></span>
+          </div>
+          <div class="brand-name">SafeSight</div>
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-status">
+          <span class="status-dot"></span>
+          <span>LIVE SAFETY NETWORK</span>
+        </div>
+
+        <div class="hero-message">
+          <h1>
+            Move through <span>the city</span><br />
+            <span class="light">with clarity.</span>
+          </h1>
+        </div>
+
+        <div class="hero-caption">
+          <span>Personalized safety routing and trusted support</span>
+        </div>
+      </div>
+
+      <div class="form-panel">
+        <div class="welcome-text">Welcome back</div>
+        <h2>Your safety, at a glance.</h2>
+        <p>Sign in to continue to your live safety workspace.</p>
+
+        <form class="auth-form">
+          <label>Email address</label>
+          <div class="input-box">
+            <input type="email" value="you@example.com" />
+          </div>
+
+          <label>Password</label>
+          <div class="input-box">
+            <input type="password" placeholder="Minimum 6 characters" />
+          </div>
+
+          <button type="button" class="primary-btn sign-in-btn">Sign in <span>›</span></button>
+        </form>
+
+        <button type="button" class="demo-btn demo-access-btn">
+          <span class="demo-icon">◌</span>
+          Use demo access
+        </button>
+      </div>
+    </div>
+
+    <div class="dashboard-layout screen">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand-row small-brand">
+            <div class="brand-mark">
+              <span class="shield"></span>
+            </div>
+            <div class="brand-name">SafeSight</div>
+          </div>
+        </div>
+
+        <div class="workspace-label">WORKSPACE</div>
+
+        <nav class="nav">
+          <div class="nav-item active">
+            <span class="nav-icon">•</span>
+            <span>Personal safety</span>
+            <span class="nav-chevron">›</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span>Live dashboard</span>
+            <span class="status-indicator"></span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">◌</span>
+            <span>Safety heatmap</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">↗</span>
+            <span>Route analysis</span>
+          </div>
+          <div class="nav-item selected">
+            <span class="nav-icon">◎</span>
+            <span>Trusted contacts</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">▭</span>
+            <span>Report incident</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">❤</span>
+            <span>Nearby help</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span>Analytics</span>
+          </div>
+        </nav>
+
+        <div class="privacy-link">Privacy controls</div>
+
+        <div class="user-box">
+          <div class="user-avatar">D</div>
+          <div class="user-meta">
+            <div class="user-name">Divya Tambakhe</div>
+            <div class="user-role">Personal account</div>
+          </div>
+          <div class="user-arrow">›</div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="breadcrumb">SafeSight <span>›</span> Trusted contacts</div>
+          <div class="top-actions">
+            <div class="location-pill">
+              <span class="location-dot"></span>
+              Location sharing on
+            </div>
+            <button class="icon-btn" aria-label="notifications">◔</button>
+            <button class="sos-top-btn">Emergency SOS</button>
+          </div>
+        </header>
+
+        <section class="content-area">
+          <div class="title-row">
+            <div>
+              <div class="eyebrow">Emergency response</div>
+              <h3>Your trusted circle.</h3>
+              <p>People who know where to find you when it matters.</p>
+            </div>
+            <button class="sos-main-btn">Emergency SOS</button>
+          </div>
+
+          <div class="cards-row">
+            <div class="contacts-card">
+              <div class="contacts-header">
+                <span>TRUSTED CONTACTS</span>
+                <button class="add-btn">Add person</button>
+              </div>
+
+              <div class="contact-item">
+                <div class="avatar avatar-blue">D</div>
+                <div class="contact-info">
+                  <div class="contact-name">DIVYA</div>
+                  <div class="contact-phone">Friend · 987654321</div>
+                </div>
+                <div class="contact-action">✎</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="avatar avatar-pink">M</div>
+                <div class="contact-info">
+                  <div class="contact-name">MOM</div>
+                  <div class="contact-phone">Mom · 8976544321</div>
+                </div>
+                <div class="contact-action">✎</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="avatar avatar-gold">D</div>
+                <div class="contact-info">
+                  <div class="contact-name">DAD</div>
+                  <div class="contact-phone">Dad · 978654321</div>
+                </div>
+                <div class="contact-action">✎</div>
+              </div>
+            </div>
+
+            <div class="sos-card">
+              <div class="sos-icon">◉</div>
+              <div class="sos-label">ONE TAP RESPONSE</div>
+              <h4>Need immediate help?</h4>
+              <p>We’ll alert your trusted circle and share your location.</p>
+              <button class="activate-sos-btn">Activate SOS</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>
