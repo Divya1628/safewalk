@@ -1,21 +1,20 @@
 from datetime import datetime
-from typing import Any, Dict, List
-
+from typing import Any, Dict
 from bson import ObjectId
-
 from app.database import db
+from app.services.ai_risk_engine import RealTimeRiskEngine
 
 
-def create_safewalk_session(payload: Dict[str, Any], risk_result: Dict[str, Any]) -> str:
+def create_safewalk_session(user_id: str, payload: Dict[str, Any], risk_result: Dict[str, Any]) -> str:
     session_data = {
-        "user_id": payload["user_id"],
+        "user_id": user_id,
         "destination": payload["destination"],
         "time_of_day": payload["time_of_day"],
         "day_type": payload["day_type"],
         "incident_count": payload["incident_count"],
         "environment_activity": payload["environment_activity"],
         "risk_score": risk_result["risk_score"],
-        "risk_level": risk_result["level"],
+        "risk_level": risk_result["risk_level"],
         "recommendation": risk_result["recommendation"],
         "status": "active",
         "countdown_seconds": 10,
@@ -30,7 +29,9 @@ def create_safewalk_session(payload: Dict[str, Any], risk_result: Dict[str, Any]
 
 
 def record_countdown(session_id: str, user_id: str, countdown_seconds: int) -> Dict[str, Any]:
-    session = db["safewalk_sessions"].find_one({"_id": ObjectId(session_id), "user_id": user_id})
+    session = db["safewalk_sessions"].find_one(
+        {"_id": ObjectId(session_id), "user_id": user_id}
+    )
     if not session:
         raise ValueError("Session not found")
 
@@ -41,14 +42,19 @@ def record_countdown(session_id: str, user_id: str, countdown_seconds: int) -> D
     }
     db["safewalk_sessions"].update_one(
         {"_id": ObjectId(session_id)},
-        {"$set": {"countdown_seconds": countdown_seconds, "updated_at": datetime.utcnow()}, "$push": {"checkins": item}},
+        {
+            "$set": {"countdown_seconds": countdown_seconds, "updated_at": datetime.utcnow()},
+            "$push": {"checkins": item},
+        },
     )
 
     return {"message": "Countdown set", "countdown_seconds": countdown_seconds}
 
 
 def record_checkin(session_id: str, user_id: str, status: str, message: str = "") -> Dict[str, Any]:
-    session = db["safewalk_sessions"].find_one({"_id": ObjectId(session_id), "user_id": user_id})
+    session = db["safewalk_sessions"].find_one(
+        {"_id": ObjectId(session_id), "user_id": user_id}
+    )
     if not session:
         raise ValueError("Session not found")
 
@@ -67,7 +73,9 @@ def record_checkin(session_id: str, user_id: str, status: str, message: str = ""
 
 
 def finish_safewalk(session_id: str, user_id: str, status: str, notes: str = "") -> Dict[str, Any]:
-    session = db["safewalk_sessions"].find_one({"_id": ObjectId(session_id), "user_id": user_id})
+    session = db["safewalk_sessions"].find_one(
+        {"_id": ObjectId(session_id), "user_id": user_id}
+    )
     if not session:
         raise ValueError("Session not found")
 
@@ -112,7 +120,7 @@ def finish_safewalk(session_id: str, user_id: str, status: str, notes: str = "")
     }
 
 
-def get_history_for_user(user_id: str) -> List[Dict[str, Any]]:
+def get_history_for_user(user_id: str) -> list:
     sessions = list(db["safewalk_sessions"].find({"user_id": user_id}))
     for item in sessions:
         item["_id"] = str(item["_id"])
